@@ -35,26 +35,31 @@ class SignUpViewController: UIViewController {
     
     @IBAction func SignUp(_ sender: UIButton) {
         if isValidEmail(testStr: self.emailTextField.text!) {
-            print("valid")
+            validationAlert.text = ""
         }
         else {
-            print("not valid")
+            validationAlert.text="email format not valid"
         }
         print("mail: "+self.emailTextField.text!)
         print("heslo: "+self.passwordTextField.text!)
     }
 
+    @IBOutlet weak var validationAlert: UILabel! {
+        didSet{
+            validationAlert.text = "";
+        }
+    }
+    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        if let targetVC = segue.destination as? LoginViewController {
+            let mail = self.emailTextField.text
+            let pass = self.passwordTextField.text
+            targetVC.email = mail
+            targetVC.password = pass
+        }
     }
-    */
 
 }

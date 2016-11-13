@@ -2,6 +2,9 @@
 import UIKit
 
 class LoginViewController: UIViewController {
+    
+    var email: String?
+    var password: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,18 +31,32 @@ class LoginViewController: UIViewController {
     
     @IBAction func SignIn(_ sender: UIButton) {
         if isValidEmail(testStr: self.emailField.text!) {
-            print("valid")
+            validationAlert.text = ""
         }
         else {
-            print("not valid")
+            validationAlert.text = "email format not valid"
         }
         print("mail: "+self.emailField.text!)
         print("heslo: "+self.passwordField.text!)
     }
     
-    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var validationAlert: UILabel! {
+        didSet {
+            validationAlert.text = ""
+        }
+    }
+    
+    @IBOutlet weak var emailField: UITextField! {
+        didSet {
+            emailField.text = email
+        }
+    }
    
-    @IBOutlet weak var passwordField: UITextField!
+    @IBOutlet weak var passwordField: UITextField! {
+        didSet {
+            passwordField.text = password
+        }
+    }
 
     /*
     // MARK: - Navigation
