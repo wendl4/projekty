@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -84,6 +83,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="0.90129509211879544" blue="0.87115294919944808" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="d5g-5B-vUL" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="5Ds-jh-b7b"/>
                             <constraint firstItem="3HK-Hd-Kps" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" constant="-1.5" id="9oA-ny-NoC"/>
@@ -96,6 +96,9 @@
                             <constraint firstItem="d5g-5B-vUL" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="lkW-va-xnd"/>
                             <constraint firstItem="xyU-Wi-bwI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-241.5" id="uzs-80-ymn"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="Jyh-hX-zwK" appends="YES" id="d6f-kI-x03"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailTextField" destination="3HK-Hd-Kps" id="azz-a0-a9Z"/>
@@ -103,6 +106,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="Jyh-hX-zwK">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="BYZ-38-t0r" id="10K-VO-9Wb"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="136.23188405797103" y="138.58695652173915"/>
         </scene>
@@ -181,6 +189,7 @@
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.99839085340499878" green="0.90211266279220581" blue="0.87201076745986938" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstItem="PJG-uM-eHl" firstAttribute="centerY" secondItem="NIB-rl-owJ" secondAttribute="centerY" constant="-234.83333333333334" id="8bJ-vK-1oB"/>
                             <constraint firstItem="GtH-oa-eRd" firstAttribute="centerY" secondItem="NIB-rl-owJ" secondAttribute="centerY" constant="-130" id="9fx-q8-U16"/>
@@ -193,6 +202,9 @@
                             <constraint firstItem="F3t-z3-zmH" firstAttribute="centerX" secondItem="NIB-rl-owJ" secondAttribute="centerX" constant="1.5000000000000284" id="i4M-eH-eMv"/>
                             <constraint firstItem="2bf-dE-m9F" firstAttribute="centerY" secondItem="NIB-rl-owJ" secondAttribute="centerY" constant="-187" id="sgL-68-1Kg"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="gi7-X6-rZz" appends="YES" id="dY7-xu-vqE"/>
+                        </connections>
                     </view>
                     <connections>
                         <outlet property="emailField" destination="2bf-dE-m9F" id="E7d-Jb-vlT"/>
@@ -201,6 +213,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="plN-7o-jeS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="YPg-7g-o8m" userLabel="Exit" sceneMemberID="exit"/>
+                <tapGestureRecognizer id="gi7-X6-rZz">
+                    <connections>
+                        <action selector="dismissKeyboard:" destination="4dq-GT-clz" id="ydd-TA-Xea"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="909.60000000000002" y="138.98050974512745"/>
         </scene>

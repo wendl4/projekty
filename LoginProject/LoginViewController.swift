@@ -1,10 +1,3 @@
-//
-//  LoginViewController.swift
-//  LoginProject
-//
-//  Created by Veronika Turiničová on 13.11.16.
-//  Copyright © 2016 Test comp. All rights reserved.
-//
 
 import UIKit
 
@@ -21,8 +14,25 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(true)
+    }
+    
+    func isValidEmail(testStr:String) -> Bool {
+        // print("validate calendar: \(testStr)")
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        
+        let emailTest = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailTest.evaluate(with: testStr)
+    }
     
     @IBAction func SignIn(_ sender: UIButton) {
+        if isValidEmail(testStr: self.emailField.text!) {
+            print("valid")
+        }
+        else {
+            print("not valid")
+        }
         print("mail: "+self.emailField.text!)
         print("heslo: "+self.passwordField.text!)
     }

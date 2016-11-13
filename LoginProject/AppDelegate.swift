@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  LoginProject
-//
-//  Created by Veronika Turiničová on 13.11.16.
-//  Copyright © 2016 Test comp. All rights reserved.
-//
+
 
 import UIKit
 
