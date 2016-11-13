@@ -32,21 +32,65 @@ class SignUpViewController: UIViewController {
         return emailTest.evaluate(with: testStr)
     }
     
+    func doStringContainsNumber( testStr : String) -> Bool{
+        
+        let numberRegEx  = ".*[0-9]+.*"
+        let testCase = NSPredicate(format:"SELF MATCHES %@", numberRegEx)
+        let containsNumber = testCase.evaluate(with: testStr)
+        
+        return containsNumber
+    }
+    
+    func doStringContainsCapital( testStr : String) -> Bool{
+        
+        let capRegEx  = ".*[A-Z]+.*"
+        let testCase = NSPredicate(format:"SELF MATCHES %@", capRegEx)
+        let containsNumber = testCase.evaluate(with: testStr)
+        
+        return containsNumber
+    }
+    
     
     @IBAction func SignUp(_ sender: UIButton) {
+        // kontrola mailu
         if isValidEmail(testStr: self.emailTextField.text!) {
             validationAlert.text = ""
         }
         else {
             validationAlert.text="email format not valid"
         }
+        // password hint
+        var strength = 2
+        if !(doStringContainsNumber(testStr: self.passwordTextField.text!)) {
+            strength -= 1
+            self.passwordHint.text = " does not contain a number"
+        }
+        if !(doStringContainsCapital(testStr: self.passwordTextField.text!)) {
+            strength -= 1
+            self.passwordHint.text = " does not contain capital"
+        }
+        switch strength {
+        case 2 :
+            self.passwordHint.text = "strength: High"
+        case 1 :
+            self.passwordHint.text = "strength: Medium,"+self.passwordHint.text!
+        default :
+            self.passwordHint.text = "strength: Low,"+self.passwordHint.text!
+            
+        }
+        //vypis na konzolu
         print("mail: "+self.emailTextField.text!)
         print("heslo: "+self.passwordTextField.text!)
+    }
+    @IBOutlet weak var passwordHint: UILabel! {
+        didSet {
+            passwordHint.text = ""
+        }
     }
 
     @IBOutlet weak var validationAlert: UILabel! {
         didSet{
-            validationAlert.text = "";
+            validationAlert.text = ""
         }
     }
     
